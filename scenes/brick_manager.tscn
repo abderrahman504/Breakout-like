@@ -1,0 +1,146 @@
+[gd_scene load_steps=23 format=4 uid="uid://b6lu5c03xlch3"]
+
+[ext_resource type="Script" uid="uid://dyyorvtlpuvvi" path="res://src/BricksManager/BricksManager.gd" id="1_22er3"]
+[ext_resource type="Texture2D" uid="uid://bulbv5jq12ff5" path="res://assets/textures/brick.png" id="1_xnran"]
+[ext_resource type="Shader" uid="uid://ubprwy4c5tvh" path="res://assets/shaders/crack.gdshader" id="2_8rixh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
+texture = ExtResource("1_xnran")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -9, 14, -9, 14, 9, -14, 9)
+
+[sub_resource type="TileSet" id="TileSet_ppgk2"]
+tile_size = Vector2i(28, 18)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_mx8sn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i55ct"]
+noise_type = 2
+seed = 12
+frequency = 0.0139
+fractal_type = 0
+cellular_distance_function = 3
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m76sv"]
+noise = SubResource("FastNoiseLite_i55ct")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m76sv"]
+shader = ExtResource("2_8rixh")
+shader_parameter/crack_tex = SubResource("NoiseTexture2D_m76sv")
+shader_parameter/crack_thickness = 0.800000038
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i55ct"]
+texture = ExtResource("1_xnran")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_m76sv"]
+tile_size = Vector2i(28, 18)
+sources/0 = SubResource("TileSetAtlasSource_i55ct")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5dge1"]
+noise_type = 2
+seed = 8
+frequency = 0.0139
+fractal_type = 0
+cellular_distance_function = 3
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ajjva"]
+noise = SubResource("FastNoiseLite_5dge1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o727a"]
+shader = ExtResource("2_8rixh")
+shader_parameter/crack_tex = SubResource("NoiseTexture2D_ajjva")
+shader_parameter/crack_thickness = 0.800000038
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m76sv"]
+noise_type = 2
+seed = 17
+frequency = 0.0139
+fractal_type = 0
+cellular_distance_function = 3
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5dge1"]
+noise = SubResource("FastNoiseLite_m76sv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajjva"]
+shader = ExtResource("2_8rixh")
+shader_parameter/crack_tex = SubResource("NoiseTexture2D_5dge1")
+shader_parameter/crack_thickness = 0.800000038
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o727a"]
+noise_type = 2
+seed = 25
+frequency = 0.0139
+fractal_type = 0
+cellular_distance_function = 3
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lu3x5"]
+noise = SubResource("FastNoiseLite_o727a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao1fo"]
+shader = ExtResource("2_8rixh")
+shader_parameter/crack_tex = SubResource("NoiseTexture2D_lu3x5")
+shader_parameter/crack_thickness = 0.800000038
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lb5tm"]
+noise_type = 2
+seed = 34
+frequency = 0.0139
+fractal_type = 0
+cellular_distance_function = 3
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yj6c0"]
+noise = SubResource("FastNoiseLite_lb5tm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5ai4"]
+shader = ExtResource("2_8rixh")
+shader_parameter/crack_tex = SubResource("NoiseTexture2D_yj6c0")
+shader_parameter/crack_thickness = 0.800000038
+
+[node name="BrickManager" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_22er3")
+
+[node name="BrickTileLayer" type="TileMapLayer" parent="."]
+self_modulate = Color(0.98055714, 0.5492968, 0.8124759, 1)
+tile_map_data = PackedByteArray("AAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_ppgk2")
+metadata/_edit_lock_ = true
+
+[node name="CrackingLayer" type="TileMapLayer" parent="."]
+self_modulate = Color(0.41568628, 0.40392157, 1, 0.47058824)
+material = SubResource("ShaderMaterial_m76sv")
+tile_map_data = PackedByteArray("AAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_m76sv")
+
+[node name="CrackingLayer2" type="TileMapLayer" parent="."]
+self_modulate = Color(0.21960784, 1, 0.27058825, 0.78039217)
+material = SubResource("ShaderMaterial_o727a")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_m76sv")
+
+[node name="CrackingLayer3" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 0.3882353, 0.27058825, 0.78039217)
+material = SubResource("ShaderMaterial_ajjva")
+tile_map_data = PackedByteArray("AAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_m76sv")
+
+[node name="CrackingLayer4" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 0.3882353, 0.27058825, 0.78039217)
+material = SubResource("ShaderMaterial_ao1fo")
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_m76sv")
+
+[node name="CrackingLayer5" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 0.3882353, 0.27058825, 0.78039217)
+material = SubResource("ShaderMaterial_t5ai4")
+tile_map_data = PackedByteArray("AAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_m76sv")
