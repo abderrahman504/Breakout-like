@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4yqt20fg36v4"]
+
+[ext_resource type="Script" uid="uid://0j1832bogpbr" path="res://src/Paddle/Paddle.gd" id="1_y7wee"]
+[ext_resource type="Script" uid="uid://ce0wvpoe7qcq5" path="res://src/Paddle/PaddleController.gd" id="2_mo4dg"]
+[ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="3_mo4dg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7c3h"]
+height = 149.99994
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2q6dc"]
+radius = 10.0
+height = 150.0
+
+[node name="Paddle" type="CharacterBody2D"]
+collision_mask = 8
+script = ExtResource("1_y7wee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_w7c3h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+self_modulate = Color(0.9987803, 0.7306125, 0.5368168, 1)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_2q6dc")
+
+[node name="Controller" type="Node" parent="." node_paths=PackedStringArray("paddle")]
+script = ExtResource("2_mo4dg")
+paddle = NodePath("..")
+
+[node name="BallLaunchSpot" type="Marker2D" parent="."]
+position = Vector2(0, -22)
+metadata/_edit_group_ = true
+
+[node name="Ball" parent="BallLaunchSpot" instance=ExtResource("3_mo4dg")]

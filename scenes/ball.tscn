@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwthlo64pi2gx"]
+
+[ext_resource type="Script" uid="uid://j6oc6ra4iscw" path="res://src/Ball.gd" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://d4jvr2grl8lrd" path="res://src/ReflectLogic/ReflectLogic.gd" id="2_cxlvu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cxlvu"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
+radius = 12.0415945
+
+[node name="Ball" type="AnimatableBody2D" groups=["balls"]]
+collision_layer = 2
+collision_mask = 13
+sync_to_physics = false
+script = ExtResource("1_7s4qf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(2.38, 2.38)
+mesh = SubResource("SphereMesh_cxlvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_f7cbr")
+
+[node name="ReflectLogic" type="Node" parent="."]
+script = ExtResource("2_cxlvu")
+metadata/_custom_type_script = "uid://d4jvr2grl8lrd"
