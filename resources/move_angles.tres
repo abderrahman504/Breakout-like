@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MoveAngles" load_steps=2 format=3 uid="uid://dtg8yaxfy8vl"]
+
+[ext_resource type="Script" uid="uid://d1gf4rybv1wwp" path="res://src/MoveAngles.gd" id="1_jucyn"]
+
+[resource]
+script = ExtResource("1_jucyn")
+movement_angles = [36.0, 72.0, 108.0, 144.0, 126.0, 162.0, 198.0, 234.0, -36.0, -72.0, -108.0, -144.0, -126.0, -162.0, -198.0, -234.0]
+metadata/_custom_type_script = "uid://d1gf4rybv1wwp"

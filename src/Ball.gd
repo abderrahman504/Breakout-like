@@ -22,5 +22,12 @@ func _on_collision(collision : KinematicCollision2D) -> void:
 			if n is ReflectLogic:
 				reflect_logic = n
 	
-	move_angle = reflect_logic.get_reflect_angle(constant_linear_velocity, collision)
+	set_move_angle(reflect_logic.get_reflect_angle(constant_linear_velocity, collision))
+
+
+func set_move_angle(angle_radians : float) -> void:
+	#print("setting move angle to ", angle_radians * 180/PI)
+	#move_angle = move_angles.clamp_angle_radian(angle_radians) * 180/PI
+	move_angle = angle_radians * 180/PI
+	#print("post clamp angle =  ", move_angle)
 	constant_linear_velocity = Vector2.from_angle(move_angle * PI/180) * speed
