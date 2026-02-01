@@ -1,6 +1,8 @@
 extends Node2D
 class_name BricksManager
 
+signal all_bricks_destroyed
+
 
 var _cracks : Dictionary[Vector2i, TileMapLayer]
 var _bricks : Dictionary[Vector2i, Brick]
@@ -30,15 +32,15 @@ func _on_ball_collision(_collision : KinematicCollision2D, brick : Brick) -> voi
 
 
 func destroy_brick(tile : Vector2i) -> void:
-	print("destroying brick")
 	if _cracks.has(tile):
 		_cracks[tile].erase_cell(tile)
 		_cracks.erase(tile)
 	_bricks[tile].queue_free()
 	_bricks.erase(tile)
+	if _bricks.is_empty():
+		all_bricks_destroyed.emit()
 
 
 func crack_brick(tile : Vector2i) -> void:
-	print("cracking brick")
 	_cracks[tile] = $CrackingLayer.get_child(randi_range(0,$CrackingLayer.get_child_count()-1))
 	_cracks[tile].set_cell(tile, 0, Vector2i(0,0))

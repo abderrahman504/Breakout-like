@@ -15,9 +15,7 @@ func launch_ball() -> void:
 		return
 	_ball_launched = true
 	var ball : Ball = $BallLaunchSpot/Ball
-	var glob_pos = ball.global_position
 	ball.reparent(get_parent())
-	ball.set_deferred("global_position", glob_pos)
 	var angle : float
 	if velocity == Vector2.ZERO:
 		angle = launch_angles.movement_angles[1] if randf() < .5 else launch_angles.movement_angles[2]

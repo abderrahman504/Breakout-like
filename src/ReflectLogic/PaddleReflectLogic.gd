@@ -10,6 +10,8 @@ func _ready() -> void:
 		printerr("Paddle not set for ", get_path())
 
 
+## Paddle reflect logic is different from normal reflection because it shifts the reflection angle in the direction of movement of the paddle,
+## which allows slight control of the movement of the ball.
 func get_reflect_angle(impact : Vector2, collision : KinematicCollision2D) -> float:
 	if paddle == null:
 		return 0

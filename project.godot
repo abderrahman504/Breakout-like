@@ -15,10 +15,14 @@ run/main_scene="uid://dv0oba3jv3st2"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelGlobals="*res://src/global/LevelGlobals.gd"
+BallSignalBus="*res://src/global/BallSignalBus.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [global_group]
 
