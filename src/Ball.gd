@@ -38,6 +38,6 @@ func set_move_angle(angle_radians : float) -> void:
 
 
 func destroy() -> void:
-	queue_free()
+	BallObjectPool.destroy_ball(self)
 	LevelGlobals.balls.erase(get_rid())
 	BallSignalBus.ball_destroyed.emit(self)
