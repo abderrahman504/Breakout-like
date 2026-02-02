@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqxg435sjxs56"]
+
+[ext_resource type="Texture2D" uid="uid://cg6hvfo4b5psu" path="res://assets/textures/ui/backup_ball.png" id="1_nt7q6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
+bg_color = Color(0.072569855, 0, 0.44995916, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgk2"]
+bg_color = Color(0.120239906, 0.26141044, 0.39638388, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
+font_size = 26
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 2)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Success" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -25.0
+offset_right = 81.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mx8sn")
+
+[node name="Label" type="Label" parent="Success"]
+layout_mode = 2
+text = "Wow what a success!"
+
+[node name="Failure" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -25.0
+offset_right = 67.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mx8sn")
+
+[node name="Label" type="Label" parent="Failure"]
+layout_mode = 2
+text = "Ran out of balls :("
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgk2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="BackupBalls" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_nt7q6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/BackupBalls"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -8.0
+offset_right = -2.0
+offset_bottom = 28.0
+grow_horizontal = 0
+text = "3"
+label_settings = SubResource("LabelSettings_2r41h")
+horizontal_alignment = 1

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LevelGlobals="*res://src/global/LevelGlobals.gd"
 BallSignalBus="*res://src/global/BallSignalBus.gd"
+BallObjectPool="*res://src/global/BallObjectPool.gd"
 
 [display]
 

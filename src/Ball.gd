@@ -5,6 +5,7 @@ class_name Ball
 @export var speed : float = 350
 @export var move_angles : MoveAngles
 var move_angle : float
+@onready var trail : Trail = $Node/Trail
 
 
 func _ready() -> void:

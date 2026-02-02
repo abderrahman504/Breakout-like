@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Paddle
 
 @export var max_speed : float = 350
-var _ball_launched : bool = false
+var _ball_slotted : bool = false
 @export var launch_angles : MoveAngles
 
 
@@ -11,9 +11,9 @@ func _physics_process(delta: float) -> void:
 
 
 func launch_ball() -> void:
-	if _ball_launched:
+	if not _ball_slotted:
 		return
-	_ball_launched = true
+	_ball_slotted = false
 	var ball : Ball = $BallLaunchSpot/Ball
 	ball.reparent(get_parent())
 	var angle : float

@@ -1,6 +1,9 @@
 extends Node2D
 class_name Level
 
+## Number of backup balls in the level
+@export var backup_count : int = 3
+
 
 func _init() -> void:
 	LevelGlobals.level = self
@@ -8,14 +11,17 @@ func _init() -> void:
 
 func _ready() -> void:
 	BallSignalBus.ball_destroyed.connect(_on_ball_destroyed)
+	recall_backup_ball()
+	
 
 
 func reset_level() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
 func _on_all_bricks_destroyed() -> void:
-	$UILayer/Control/Success.show()
+	$UILayer/UI/Success.show()
 	get_tree().paused = true
 
 
@@ -26,9 +32,26 @@ func _on_out_of_bounds_area_body_entered(body: Node2D) -> void:
 
 func _on_ball_destroyed(_ball : Ball) -> void:
 	if LevelGlobals.balls.is_empty():
+		_on_all_active_balls_lost()
+
+
+## Called when all balls that are active in the level are gone. Either recalls a backup ball or ends the level
+func _on_all_active_balls_lost() -> void:
+	if backup_count >= 0:
+		await get_tree().create_timer(0.5).timeout
+		recall_backup_ball()
+	else:
 		_on_all_balls_lost()
 
 
+func recall_backup_ball() -> void:
+	backup_count -= 1
+	var ball := BallObjectPool.get_ball_object()
+	add_child(ball)
+	$SlotBallToPaddle.slot_ball(ball)
+
+
+## Called when all active and backup balls have been spent.
 func _on_all_balls_lost() -> void:
-	$UILayer/Control/Failure.show()
+	$UILayer/UI/Failure.show()
 	get_tree().paused = true

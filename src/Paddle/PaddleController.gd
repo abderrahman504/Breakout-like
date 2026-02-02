@@ -20,4 +20,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		paddle.launch_ball()
 	if Input.is_action_just_pressed("reset_level"):
 		LevelGlobals.level.reset_level()
-

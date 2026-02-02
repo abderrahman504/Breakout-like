@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=4 uid="uid://dv0oba3jv3st2"]
+[gd_scene load_steps=10 format=4 uid="uid://dv0oba3jv3st2"]
 
 [ext_resource type="Texture2D" uid="uid://bx86461glea4r" path="res://icon.svg" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://quc1g2adk13c" path="res://src/level/Level.gd" id="1_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://b4yqt20fg36v4" path="res://scenes/paddle.tscn" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://b6lu5c03xlch3" path="res://scenes/brick_manager.tscn" id="3_w8frs"]
+[ext_resource type="PackedScene" uid="uid://bqxg435sjxs56" path="res://scenes/ui.tscn" id="5_ppgk2"]
+[ext_resource type="Script" uid="uid://ibojqqj2x8kg" path="res://src/misc/SlotBallToPaddle.gd" id="6_2r41h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx8sn"]
 radius = 23.0
-height = 1184.0
+height = 1402.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8frs"]
 texture = ExtResource("1_2q6dc")
@@ -21,9 +23,6 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_w8frs")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
-bg_color = Color(0.072569855, 0, 0.44995916, 1)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mx8sn")
 metadata/_edit_lock_ = true
@@ -33,10 +32,10 @@ offset_left = -9.0
 offset_top = -33.0
 offset_right = 1186.0
 offset_bottom = 683.0
-color = Color(0.10373264, 0.13557702, 0.2729318, 1)
+color = Color(0.867052, 0.84339625, 0.6585817, 1)
 
 [node name="OutofBoundsArea" type="Area2D" parent="."]
-position = Vector2(592, 718)
+position = Vector2(580, 764)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
@@ -46,7 +45,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_mx8sn")
 
 [node name="Paddle" parent="." instance=ExtResource("1_w7c3h")]
-position = Vector2(586, 629)
+position = Vector2(586, 571.725)
 
 [node name="Walls" type="TileMapLayer" parent="."]
 position = Vector2(-14, 0)
@@ -57,57 +56,23 @@ tile_set = SubResource("TileSet_mx8sn")
 position = Vector2(-14, 0)
 
 [node name="BrickLayer" parent="BrickManager" index="0"]
-tile_map_data = PackedByteArray("AAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAJAAkAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAkAAQAAAAAAAAALAAgAAQAAAAAAAAAKAAgAAQAAAAAAAAAJAAgAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAKAAgAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAJAAkAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAkAAQAAAAAAAAALAAgAAQAAAAAAAAA=")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UILayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" parent="UILayer" instance=ExtResource("5_ppgk2")]
 
-[node name="Success" type="PanelContainer" parent="UILayer/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -25.0
-offset_right = 81.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mx8sn")
+[node name="SlotBallToPaddle" type="Node" parent="." node_paths=PackedStringArray("paddle")]
+script = ExtResource("6_2r41h")
+animation_length = 2.0
+paddle = NodePath("../Paddle")
 
-[node name="Label" type="Label" parent="UILayer/Control/Success"]
-layout_mode = 2
-text = "Wow what a success!"
+[node name="Start" type="Marker2D" parent="SlotBallToPaddle"]
+position = Vector2(111, 681)
+gizmo_extents = 20.0
 
-[node name="Failure" type="PanelContainer" parent="UILayer/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -25.0
-offset_right = 67.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mx8sn")
-
-[node name="Label" type="Label" parent="UILayer/Control/Failure"]
-layout_mode = 2
-text = "Ran out of balls :("
+[node name="MaxY" type="Marker2D" parent="SlotBallToPaddle"]
+position = Vector2(158, 293)
 
 [connection signal="body_entered" from="OutofBoundsArea" to="." method="_on_out_of_bounds_area_body_entered"]
 [connection signal="all_bricks_destroyed" from="BrickManager" to="." method="_on_all_bricks_destroyed"]
