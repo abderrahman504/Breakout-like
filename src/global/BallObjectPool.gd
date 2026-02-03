@@ -2,7 +2,7 @@ extends Node
 
 # Singleton script
 
-var _ball_scene : PackedScene = preload("res://scenes/ball.tscn")
+var _ball_scene : PackedScene = preload("res://scenes/level/breakout/ball.tscn")
 
 var _unused_pool : Dictionary[RID, Ball]
 var _queue : Array[Ball]

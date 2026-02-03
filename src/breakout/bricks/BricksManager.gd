@@ -8,7 +8,7 @@ var _cracks : Dictionary[Vector2i, TileMapLayer]
 var _bricks : Dictionary[Vector2i, Brick]
 
 @onready var _brick_layer : TileMapLayer = $BrickLayer
-var _brick_scene : PackedScene = load("res://scenes/brick.tscn")
+var _brick_scene : PackedScene = load("res://scenes/level/breakout/brick.tscn")
 
 
 func _ready() -> void:

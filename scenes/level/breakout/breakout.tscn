@@ -1,18 +1,18 @@
 [gd_scene load_steps=10 format=4 uid="uid://dv0oba3jv3st2"]
 
-[ext_resource type="Texture2D" uid="uid://bx86461glea4r" path="res://icon.svg" id="1_2q6dc"]
-[ext_resource type="Script" uid="uid://quc1g2adk13c" path="res://src/level/Level.gd" id="1_mx8sn"]
-[ext_resource type="PackedScene" uid="uid://b4yqt20fg36v4" path="res://scenes/paddle.tscn" id="1_w7c3h"]
-[ext_resource type="PackedScene" uid="uid://b6lu5c03xlch3" path="res://scenes/brick_manager.tscn" id="3_w8frs"]
-[ext_resource type="PackedScene" uid="uid://bqxg435sjxs56" path="res://scenes/ui.tscn" id="5_ppgk2"]
-[ext_resource type="Script" uid="uid://ibojqqj2x8kg" path="res://src/breakout/misc/SlotBallToPaddle.gd" id="6_2r41h"]
+[ext_resource type="Script" uid="uid://quc1g2adk13c" path="res://src/breakout/Breakout.gd" id="1_7ptx0"]
+[ext_resource type="PackedScene" uid="uid://b4yqt20fg36v4" path="res://scenes/level/breakout/paddle.tscn" id="2_bicbw"]
+[ext_resource type="Texture2D" uid="uid://bx86461glea4r" path="res://icon.svg" id="3_5wl61"]
+[ext_resource type="PackedScene" uid="uid://b6lu5c03xlch3" path="res://scenes/level/breakout/brick_manager.tscn" id="4_fhxu1"]
+[ext_resource type="PackedScene" uid="uid://bqxg435sjxs56" path="res://scenes/ui.tscn" id="5_wpapq"]
+[ext_resource type="Script" uid="uid://ibojqqj2x8kg" path="res://src/breakout/misc/SlotBallToPaddle.gd" id="6_ve3r8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx8sn"]
 radius = 23.0
 height = 1402.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8frs"]
-texture = ExtResource("1_2q6dc")
+texture = ExtResource("3_5wl61")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -24,7 +24,7 @@ physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_w8frs")
 
 [node name="Breakout" type="Node2D"]
-script = ExtResource("1_mx8sn")
+script = ExtResource("1_7ptx0")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -44,7 +44,7 @@ metadata/_edit_group_ = true
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_mx8sn")
 
-[node name="Paddle" parent="." instance=ExtResource("1_w7c3h")]
+[node name="Paddle" parent="." instance=ExtResource("2_bicbw")]
 position = Vector2(586, 571.725)
 
 [node name="Walls" type="TileMapLayer" parent="."]
@@ -52,7 +52,7 @@ position = Vector2(-14, 0)
 tile_map_data = PackedByteArray("AAAAAAkAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAAAAAoAAQAAAAAAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAAAAAAUAAIAAQAAAAAAAAAUAAMAAQAAAAAAAAAUAAQAAQAAAAAAAAAUAAUAAQAAAAAAAAAUAAYAAQAAAAAAAAAUAAcAAQAAAAAAAAAUAAgAAQAAAAAAAAAUAAkAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAoAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_mx8sn")
 
-[node name="BrickManager" parent="." instance=ExtResource("3_w8frs")]
+[node name="BrickManager" parent="." instance=ExtResource("4_fhxu1")]
 position = Vector2(-14, 0)
 
 [node name="BrickLayer" parent="BrickManager" index="0"]
@@ -60,10 +60,10 @@ tile_map_data = PackedByteArray("AAAKAAgAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAoAAQAAAAA
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="UI" parent="UILayer" instance=ExtResource("5_ppgk2")]
+[node name="UI" parent="UILayer" instance=ExtResource("5_wpapq")]
 
 [node name="SlotBallToPaddle" type="Node" parent="." node_paths=PackedStringArray("paddle")]
-script = ExtResource("6_2r41h")
+script = ExtResource("6_ve3r8")
 animation_length = 2.0
 paddle = NodePath("../Paddle")
 

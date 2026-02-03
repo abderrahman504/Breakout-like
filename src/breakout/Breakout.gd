@@ -1,12 +1,12 @@
 extends Node2D
-class_name Level
+class_name Breakout
 
 ## Number of backup balls in the level
 @export var _backup_count : int = 3
 
 
 func _init() -> void:
-	LevelGlobals.level = self
+	LevelGlobals.breakout = self
 	LevelGlobals.backup_balls = _backup_count
 
 
