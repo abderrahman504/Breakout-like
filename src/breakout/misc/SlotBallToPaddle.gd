@@ -37,15 +37,14 @@ func _physics_process(delta : float) -> void:
 		_timer = 0
 		_queue[0].reparent(dest_node)
 		_queue[0].process_mode = Node.PROCESS_MODE_INHERIT
-		_queue[0].trail.disabled = false
 		_queue.pop_front()
 
 
 ## Plays an animation of slotting the ball to the paddle. Paddle must not have a slotted ball for this to work.
 func slot_ball(ball : Ball) -> void:
-	ball.trail.disabled = true
 	ball.process_mode = Node.PROCESS_MODE_DISABLED
 	_queue.append(ball)
 	ball.global_position = start_pos
+	ball.trail.disabled = false
 	_timer = 0
 	

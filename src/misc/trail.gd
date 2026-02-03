@@ -19,6 +19,7 @@ var disabled : bool:
 
 func _ready() -> void:
 	disabled = false
+	position = Vector2.ZERO
 
 
 func _process(delta: float) -> void:
@@ -32,3 +33,7 @@ func _update(delta : float) -> void:
 		var weight : float = (points[i] - points[i-1]).length() * trail_speed * delta
 		points[i] =  points[i].move_toward(points[i-1], weight)
 	points[0] = trailing.global_position
+	#var trail_length : float = 0
+	#for i in range(0, points.size()-1):
+		#trail_length += (points[i]-points[i+1]).length()
+	#print("Trail length=",trail_length)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwthlo64pi2gx"]
 
-[ext_resource type="Script" uid="uid://j6oc6ra4iscw" path="res://src/breakout/Ball.gd" id="1_7s4qf"]
-[ext_resource type="Script" uid="uid://d4jvr2grl8lrd" path="res://src/breakout/reflect_logic/ReflectLogic.gd" id="2_cxlvu"]
-[ext_resource type="Resource" uid="uid://dtg8yaxfy8vl" path="res://resources/move_angles.tres" id="2_f7cbr"]
-[ext_resource type="Texture2D" uid="uid://c8bq4umnnr5pj" path="res://assets/textures/ball.png" id="3_4dx81"]
-[ext_resource type="PackedScene" uid="uid://ysdrqqndwd4n" path="res://scenes/trail.tscn" id="5_eew57"]
+[ext_resource type="Script" uid="uid://j6oc6ra4iscw" path="res://src/breakout/Ball.gd" id="1_djrpr"]
+[ext_resource type="Resource" uid="uid://dtg8yaxfy8vl" path="res://resources/move_angles.tres" id="2_08dxc"]
+[ext_resource type="Texture2D" uid="uid://c8bq4umnnr5pj" path="res://assets/textures/ball.png" id="3_k81je"]
+[ext_resource type="PackedScene" uid="uid://ysdrqqndwd4n" path="res://scenes/trail.tscn" id="4_urxgx"]
+[ext_resource type="Script" uid="uid://d4jvr2grl8lrd" path="res://src/breakout/reflect_logic/ReflectLogic.gd" id="5_5n2kd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cxlvu"]
 radius = 5.0
@@ -17,9 +17,9 @@ radius = 13.038404
 collision_layer = 2
 collision_mask = 13
 sync_to_physics = false
-script = ExtResource("1_7s4qf")
+script = ExtResource("1_djrpr")
 speed = 450.0
-move_angles = ExtResource("2_f7cbr")
+move_angles = ExtResource("2_08dxc")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
@@ -28,21 +28,22 @@ mesh = SubResource("SphereMesh_cxlvu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.213, 0.213)
-texture = ExtResource("3_4dx81")
+texture = ExtResource("3_k81je")
 
 [node name="Node" type="Node" parent="."]
 
-[node name="Trail" parent="Node" node_paths=PackedStringArray("trailing") instance=ExtResource("5_eew57")]
+[node name="Trail" parent="Node" node_paths=PackedStringArray("trailing") instance=ExtResource("4_urxgx")]
+process_mode = 1
 z_index = -1
-points = PackedVector2Array(1, 1, 33, 45, 5, 32)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 width = 20.0
 trailing = NodePath("../..")
-trail_speed = 50.0
+trail_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_f7cbr")
 
 [node name="ReflectLogic" type="Node" parent="."]
-script = ExtResource("2_cxlvu")
+script = ExtResource("5_5n2kd")
 metadata/_custom_type_script = "uid://d4jvr2grl8lrd"
