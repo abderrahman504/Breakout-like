@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4yqt20fg36v4"]
 
-[ext_resource type="Script" uid="uid://0j1832bogpbr" path="res://src/Paddle/Paddle.gd" id="1_y7wee"]
-[ext_resource type="Script" uid="uid://ce0wvpoe7qcq5" path="res://src/Paddle/PaddleController.gd" id="2_mo4dg"]
+[ext_resource type="Script" uid="uid://0j1832bogpbr" path="res://src/breakout/paddle/Paddle.gd" id="1_y7wee"]
+[ext_resource type="Script" uid="uid://ce0wvpoe7qcq5" path="res://src/breakout/paddle/PaddleController.gd" id="2_mo4dg"]
 [ext_resource type="Resource" uid="uid://b7d8x5t8u6ubb" path="res://resources/paddle_launch_angles.tres" id="2_pacq5"]
-[ext_resource type="Script" uid="uid://cpe454vghank0" path="res://src/ReflectLogic/PaddleReflectLogic.gd" id="5_kvcsl"]
+[ext_resource type="Script" uid="uid://cpe454vghank0" path="res://src/breakout/reflect_logic/PaddleReflectLogic.gd" id="5_kvcsl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7c3h"]
 height = 149.99994

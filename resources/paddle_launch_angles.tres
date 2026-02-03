@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MoveAngles" load_steps=2 format=3 uid="uid://b7d8x5t8u6ubb"]
 
-[ext_resource type="Script" uid="uid://d1gf4rybv1wwp" path="res://src/MoveAngles.gd" id="1_d124o"]
+[ext_resource type="Script" uid="uid://d1gf4rybv1wwp" path="res://src/breakout/misc/MoveAngles.gd" id="1_d124o"]
 
 [resource]
 script = ExtResource("1_d124o")

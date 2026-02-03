@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://b6lu5c03xlch3"]
 
-[ext_resource type="Script" uid="uid://dyyorvtlpuvvi" path="res://src/bricks/BricksManager.gd" id="1_22er3"]
+[ext_resource type="Script" uid="uid://dyyorvtlpuvvi" path="res://src/breakout/bricks/BricksManager.gd" id="1_22er3"]
 [ext_resource type="Texture2D" uid="uid://bulbv5jq12ff5" path="res://assets/textures/brick.png" id="1_xnran"]
 [ext_resource type="Shader" uid="uid://ubprwy4c5tvh" path="res://assets/shaders/crack.gdshader" id="2_8rixh"]
 

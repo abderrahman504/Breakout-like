@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwthlo64pi2gx"]
 
-[ext_resource type="Script" uid="uid://j6oc6ra4iscw" path="res://src/Ball.gd" id="1_7s4qf"]
-[ext_resource type="Script" uid="uid://d4jvr2grl8lrd" path="res://src/ReflectLogic/ReflectLogic.gd" id="2_cxlvu"]
+[ext_resource type="Script" uid="uid://j6oc6ra4iscw" path="res://src/breakout/Ball.gd" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://d4jvr2grl8lrd" path="res://src/breakout/reflect_logic/ReflectLogic.gd" id="2_cxlvu"]
 [ext_resource type="Resource" uid="uid://dtg8yaxfy8vl" path="res://resources/move_angles.tres" id="2_f7cbr"]
 [ext_resource type="Texture2D" uid="uid://c8bq4umnnr5pj" path="res://assets/textures/ball.png" id="3_4dx81"]
 [ext_resource type="PackedScene" uid="uid://ysdrqqndwd4n" path="res://scenes/trail.tscn" id="5_eew57"]

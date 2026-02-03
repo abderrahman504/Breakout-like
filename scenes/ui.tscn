@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqxg435sjxs56"]
+[gd_scene load_steps=7 format=3 uid="uid://bqxg435sjxs56"]
 
 [ext_resource type="Texture2D" uid="uid://cg6hvfo4b5psu" path="res://assets/textures/ui/backup_ball.png" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://cgpypemeujm57" path="res://assets/ui/blank_panel_outlined.png" id="1_yev5y"]
 [ext_resource type="Script" uid="uid://c25qwaudjdf62" path="res://src/level/ui/BackupBallsElement.gd" id="2_x4jx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
 bg_color = Color(0.072569855, 0, 0.44995916, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgk2"]
-bg_color = Color(0.120239906, 0.26141044, 0.39638388, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdt2y"]
+texture = ExtResource("1_yev5y")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
 font_size = 26
@@ -66,6 +71,7 @@ layout_mode = 2
 text = "Ran out of balls :("
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0.24726978, 0.37210438, 0.7338508, 1)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -74,7 +80,7 @@ anchor_bottom = 1.0
 offset_top = -41.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppgk2")
+theme_override_styles/panel = SubResource("StyleBoxTexture_gdt2y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
