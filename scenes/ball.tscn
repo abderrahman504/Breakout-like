@@ -30,6 +30,15 @@ mesh = SubResource("SphereMesh_cxlvu")
 scale = Vector2(0.213, 0.213)
 texture = ExtResource("3_4dx81")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Trail" parent="Node" node_paths=PackedStringArray("trailing") instance=ExtResource("5_eew57")]
+z_index = -1
+points = PackedVector2Array(1, 1, 33, 45, 5, 32)
+width = 20.0
+trailing = NodePath("../..")
+trail_speed = 50.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_f7cbr")
@@ -37,11 +46,3 @@ shape = SubResource("CircleShape2D_f7cbr")
 [node name="ReflectLogic" type="Node" parent="."]
 script = ExtResource("2_cxlvu")
 metadata/_custom_type_script = "uid://d4jvr2grl8lrd"
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Trail" parent="Node" node_paths=PackedStringArray("trailing") instance=ExtResource("5_eew57")]
-show_behind_parent = true
-width = 20.0
-trailing = NodePath("../..")
-trail_speed = 50.0

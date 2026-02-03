@@ -12,6 +12,7 @@ var _used_balls : Dictionary[RID, Ball]
 ## Returns a previously unused ball object by claiming it from the object pool or instantiating it.
 func get_ball_object() -> Ball:
 	var ball : Ball = _ball_scene.instantiate()
+	#var ball : Ball
 	#if _unused_pool.is_empty():
 	#	ball = _ball_scene.instantiate()
 	#else:
@@ -24,6 +25,7 @@ func get_ball_object() -> Ball:
 ## Returns the given ball to the object pool and returns true, or returns false if the ball is unused.
 func destroy_ball(ball : Ball) -> bool:
 	ball.queue_free()
+	#_reset_ball(ball)
 	#var rid : RID = ball.get_rid()
 	#if _unused_pool.has(rid): 
 	#	printerr("Trying to destroy ball in unused pool")
@@ -39,3 +41,9 @@ func destroy_ball(ball : Ball) -> bool:
 	#	push_warning("Ball Pool encountered unregistered ball. Adding to pool")
 	#	_used_balls.erase(rid)
 	return true
+
+
+func _reset_ball(ball : Ball) -> void:
+	ball.constant_linear_velocity = Vector2.ZERO
+	ball.move_angle = 0
+	

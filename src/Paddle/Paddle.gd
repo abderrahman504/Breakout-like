@@ -18,8 +18,8 @@ func launch_ball() -> void:
 	ball.reparent(get_parent())
 	var angle : float
 	if velocity == Vector2.ZERO:
-		angle = launch_angles.movement_angles[1] if randf() < .5 else launch_angles.movement_angles[2]
+		angle = launch_angles.movement_angles[0] if randf() < .5 else launch_angles.movement_angles[1]
 	else:
-		angle = launch_angles.movement_angles[0] if velocity.x > 0 else launch_angles.movement_angles[3]
+		angle = launch_angles.movement_angles[0] if velocity.x > 0 else launch_angles.movement_angles[1]
 	ball.set_move_angle(angle * PI/180)
 	ball.constant_linear_velocity = Vector2.from_angle(angle * PI/180) * ball.speed

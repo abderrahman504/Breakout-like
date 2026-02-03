@@ -2,11 +2,12 @@ extends Node2D
 class_name Level
 
 ## Number of backup balls in the level
-@export var backup_count : int = 3
+@export var _backup_count : int = 3
 
 
 func _init() -> void:
 	LevelGlobals.level = self
+	LevelGlobals.backup_balls = _backup_count
 
 
 func _ready() -> void:
@@ -37,7 +38,7 @@ func _on_ball_destroyed(_ball : Ball) -> void:
 
 ## Called when all balls that are active in the level are gone. Either recalls a backup ball or ends the level
 func _on_all_active_balls_lost() -> void:
-	if backup_count >= 0:
+	if LevelGlobals.backup_balls > 0:
 		await get_tree().create_timer(0.5).timeout
 		recall_backup_ball()
 	else:
@@ -45,7 +46,7 @@ func _on_all_active_balls_lost() -> void:
 
 
 func recall_backup_ball() -> void:
-	backup_count -= 1
+	LevelGlobals.backup_balls -= 1
 	var ball := BallObjectPool.get_ball_object()
 	add_child(ball)
 	$SlotBallToPaddle.slot_ball(ball)

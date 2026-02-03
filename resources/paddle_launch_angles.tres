@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_d124o")
-movement_angles = [-36.0, -72.0, -108.0, -144.0]
+movement_angles = [-72.0, -108.0]
 metadata/_custom_type_script = "uid://d1gf4rybv1wwp"

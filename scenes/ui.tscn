@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqxg435sjxs56"]
+[gd_scene load_steps=6 format=3 uid="uid://bqxg435sjxs56"]
 
 [ext_resource type="Texture2D" uid="uid://cg6hvfo4b5psu" path="res://assets/textures/ui/backup_ball.png" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://c25qwaudjdf62" path="res://src/level/ui/BackupBallsElement.gd" id="2_x4jx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
 bg_color = Color(0.072569855, 0, 0.44995916, 1)
@@ -83,6 +84,7 @@ layout_mode = 2
 texture = ExtResource("1_nt7q6")
 expand_mode = 3
 stretch_mode = 5
+script = ExtResource("2_x4jx1")
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/BackupBalls"]
 layout_mode = 1
